@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Dev-Note
+devnote is a sleek, lightweight MERN Stack Single Page Application designed for developers and students. It offers a distraction-free workspace to instantly capture ideas, structure thoughts, and manage tasks with zero page reloads. Featuring real-time CRUD and dynamic search, it keeps your digital notes fast, secure, and efficient.
+>>>>>>> 3a245208eeb465835bf76da2fa40d72adc88b389
