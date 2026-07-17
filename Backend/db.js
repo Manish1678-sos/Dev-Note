@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const mongoURI="mongodb://localhost:/devnote";
+const mongoURI="mongodb://localhost:27017/devnote";
 const connectToMongo=async()=>{
 try{
    await mongoose.connect(mongoURI);
