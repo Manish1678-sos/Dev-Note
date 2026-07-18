@@ -28,6 +28,60 @@ const NoteState=(props)=>{
     "tag": "personal",
     "date": "2026-07-17T03:44:05.502Z",
     "__v": 0
+  },
+    {
+    "_id": "6a59a5054c2fd1bccb4837b1",
+    "user": "6a58550ece923345b8054981",
+    "title": "My Title",
+    "description": "Please wake up early",
+    "tag": "personal",
+    "date": "2026-07-17T03:44:05.502Z",
+    "__v": 0
+  },
+    {
+    "_id": "6a59a5054c2fd1bccb4837b1",
+    "user": "6a58550ece923345b8054981",
+    "title": "My Title",
+    "description": "Please wake up early",
+    "tag": "personal",
+    "date": "2026-07-17T03:44:05.502Z",
+    "__v": 0
+  },
+    {
+    "_id": "6a59a5054c2fd1bccb4837b1",
+    "user": "6a58550ece923345b8054981",
+    "title": "My Title",
+    "description": "Please wake up early",
+    "tag": "personal",
+    "date": "2026-07-17T03:44:05.502Z",
+    "__v": 0
+  },
+    {
+    "_id": "6a59a5054c2fd1bccb4837b1",
+    "user": "6a58550ece923345b8054981",
+    "title": "My Title",
+    "description": "Please wake up early",
+    "tag": "personal",
+    "date": "2026-07-17T03:44:05.502Z",
+    "__v": 0
+  },
+    {
+    "_id": "6a59a5054c2fd1bccb4837b1",
+    "user": "6a58550ece923345b8054981",
+    "title": "My Title",
+    "description": "Please wake up early",
+    "tag": "personal",
+    "date": "2026-07-17T03:44:05.502Z",
+    "__v": 0
+  },
+    {
+    "_id": "6a59a5054c2fd1bccb4837b1",
+    "user": "6a58550ece923345b8054981",
+    "title": "My Title",
+    "description": "Please wake up early",
+    "tag": "personal",
+    "date": "2026-07-17T03:44:05.502Z",
+    "__v": 0
   }
 ]
 const [notes,setNotes]=useState(notesInitial)
