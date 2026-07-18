@@ -9,6 +9,6 @@ app.use(express.json())
 app.use('/api/auth',require('./routes/auth'));
 app.use('/api/notes',require('./routes/Note'));
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`DevNote Backend listening on port http://localhost:${port}`)
 })
 
