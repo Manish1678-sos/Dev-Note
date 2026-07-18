@@ -3,7 +3,7 @@ import  {useState} from "react";
 const NoteState=(props)=>{
     const notesInitial=[
   {
-    "_id": "6a59a5014c2fd1bccb4837af",
+    "_id": "6a59a5014c2fd1bccb4837af1",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -12,7 +12,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
   {
-    "_id": "6a59a5044c2fd1bccb4837b0",
+    "_id": "6a59a5044c2fd1bccb4837b02",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -21,7 +21,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
   {
-    "_id": "6a59a5054c2fd1bccb4837b1",
+    "_id": "6a59a5054c2fd1bccb4837b13",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -30,7 +30,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
     {
-    "_id": "6a59a5054c2fd1bccb4837b1",
+    "_id": "6a59a5054c2fd1bccb4837b14",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -39,7 +39,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
     {
-    "_id": "6a59a5054c2fd1bccb4837b1",
+    "_id": "6a59a5054c2fd1bccb4837b15",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -48,7 +48,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
     {
-    "_id": "6a59a5054c2fd1bccb4837b1",
+    "_id": "6a59a5054c2fd1bccb4837b16",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -57,7 +57,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
     {
-    "_id": "6a59a5054c2fd1bccb4837b1",
+    "_id": "6a59a5054c2fd1bccb4837b17",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -66,7 +66,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
     {
-    "_id": "6a59a5054c2fd1bccb4837b1",
+    "_id": "6a59a5054c2fd1bccb4837b18",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
@@ -75,7 +75,7 @@ const NoteState=(props)=>{
     "__v": 0
   },
     {
-    "_id": "6a59a5054c2fd1bccb4837b1",
+    "_id": "6a59a5054c2fd1bccb4837b18",
     "user": "6a58550ece923345b8054981",
     "title": "My Title",
     "description": "Please wake up early",
