@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-i{
-  cursor:pointer;
+.bi,i{
+  cursor: pointer !important;;
 }
