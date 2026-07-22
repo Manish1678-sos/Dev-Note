@@ -8,7 +8,7 @@ const fetchUser = require('../middleware/fetchUser');
 
 const { body, validationResult } = require('express-validator');
 
-// ROUTE:1:-Create a User using: POST "/api/auth/". Doesn't require Auth
+// ROUTE 1: Create a User using: POST "/api/auth/". Doesn't require Auth
 router.post('/',
     [
         body('name', 'Enter a valid name').isLength({ min: 3 }),
@@ -16,15 +16,16 @@ router.post('/',
         body('password', 'Enter a valid password').isLength({ min: 5 }),
     ],
     async (req, res) => {
+        let success = false;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ success, errors: errors.array() });
         }
 
         try {
             let user = await User.findOne({ email: req.body.email });
             if (user) {
-                return res.status(400).json({ error: "Sorry a user with this email already exists" });
+                return res.status(400).json({ success, error: "Sorry a user with this email already exists" });
             }
 
             const salt = await bcrypt.genSalt();
@@ -42,7 +43,9 @@ router.post('/',
                 }
             };
             const authToken = jwt.sign(data, JWT_SECRET);
-            res.json({ authToken });
+            
+            success = true;
+            res.json({ success, authToken });
 
         } catch (error) {
             console.error(error.message);
@@ -51,16 +54,17 @@ router.post('/',
     }
 );
 
-// ROUTE:2:-Authenticate a user using: POST "/api/auth/login"
+// ROUTE 2: Authenticate a user using: POST "/api/auth/login"
 router.post('/login',
     [
         body('email', 'Enter a valid email').isEmail(),
         body('password', 'Password cannot be blank').exists(),
     ],
     async (req, res) => {
+        let success = false;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ success, errors: errors.array() });
         }
 
         const { email, password } = req.body;
@@ -68,12 +72,12 @@ router.post('/login',
         try {
             let user = await User.findOne({ email });
             if (!user) {
-                return res.status(400).json({ error: 'Please try to login with correct credentials' });
+                return res.status(400).json({ success, error: 'Please try to login with correct credentials' });
             }
 
             const passwordCompare = await bcrypt.compare(password, user.password);
             if (!passwordCompare) {
-                return res.status(400).json({ error: 'Please try to login with correct credentials' });
+                return res.status(400).json({ success, error: 'Please try to login with correct credentials' });
             }
 
             const data = {
@@ -82,7 +86,9 @@ router.post('/login',
                 }
             };
             const authToken = jwt.sign(data, JWT_SECRET);
-            res.json({ authToken });
+            
+            success = true;
+            res.json({ success, authToken });
 
         } catch (error) {
             console.error(error.message);
@@ -90,25 +96,17 @@ router.post('/login',
         }
     }
 );
-// ROUTE:3:-Get loggedin  user details using: POST "/api/auth/getUser".Login requiered
 
-router.post('/getUser',fetchUser,async (req, res) => {
+// ROUTE 3: Get logged-in user details using: POST "/api/auth/getUser". Login required
+router.post('/getUser', fetchUser, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await User.findById(userId).select("-password");
+        res.send(user);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occurred");
+    }
+});
 
-
-
-
-
-
-
-
-try{
-    const userId=req.user.id;
-const user=await User.findById(userId).select("-password");
-res.send(user);
-}
-catch(error){
-     console.error(error.message);
-            res.status(500).send("Some error occurred");
-}
-    })
 module.exports = router;
