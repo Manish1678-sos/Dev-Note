@@ -3,7 +3,7 @@ import NoteContext from "../context/notes/NoteContext";
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(NoteContext);
   const { notes, getNotes, editNote } = context;
 
@@ -30,12 +30,14 @@ const Notes = () => {
       edescription: currentNote.description,
       etag: currentNote.tag || "default",
     });
+
   };
 
   const handleClick = (e) => {
     e.preventDefault();
     editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
+        props.showAlert("Updated successfully","success")
   };
 
   const onChange = (e) => {
@@ -44,7 +46,7 @@ const Notes = () => {
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={props.showAlert} />
 
       {/* Hidden Launch Modal Button */}
       <button
@@ -160,7 +162,7 @@ const Notes = () => {
             return (
               <Noteitem
                 key={note._id}
-                updateNote={updateNote}
+                updateNote={updateNote} showAlert={props.showAlert}
                 note={note}
               />
             );
