@@ -1,9 +1,10 @@
-import React,{useState} from 'react'
-import { useNavigate} from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
-  const[cridential,setCridential]=useState({email:"",password:""});
- let Navigate=useNavigate();
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  let navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/auth/login", {
@@ -11,40 +12,57 @@ const Login = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body:JSON.stringify({email:cridential.email,password:cridential.password})
-      
+      body: JSON.stringify({ email: credentials.email, password: credentials.password }),
     });
-    
+
     const json = await response.json();
     console.log(json);
-    if(json.success){
-      //Save the authtoken and redirect
-      localStorage.setItem('token',json.authtoken);
-    Navigate("/")
-    props.showAlert("Account created successfully","success");
 
-    }
-    else
-    {
-      props.showAlert("Invalid creedentials","danger");
+    if (json.success) {
+      // Save auth token and redirect to home
+      localStorage.setItem('token', json.authtoken);
+      props.showAlert("Logged in successfully", "success");
+      navigate("/");
+    } else {
+      props.showAlert("Invalid credentials", "danger");
     }
   };
-const onChange=(e)=>{
-  setCridential({...cridential,[e.target.name]:e.target.value})
-}
+
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div>
+    <div className="container mt-3">
+      <h2>Login to continue to DevNote</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
-          <input type="email" className="form-control" value={cridential.email} id="email" name="email" aria-describedby="emailHelp" onChange={onChange} />
+          <input
+            type="email"
+            className="form-control"
+            value={credentials.email}
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            onChange={onChange}
+            required
+          />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
-          <label htmlFor="pass" className="form-label">Password</label>
-          <input type="password" className="form-control" value={cridential.password} id="password" name="password" onChange={onChange}/>
+          <label htmlFor="password" className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            value={credentials.password}
+            id="password"
+            name="password"
+            onChange={onChange}
+            required
+          />
         </div>
-        
+
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>

@@ -8,8 +8,8 @@ const fetchUser = require('../middleware/fetchUser');
 
 const { body, validationResult } = require('express-validator');
 
-// ROUTE 1: Create a User using: POST "/api/auth/". Doesn't require Auth
-router.post('/',
+// ROUTE 1: Create a User using: POST "/api/auth/createuser". Doesn't require Auth
+router.post('/createuser',
     [
         body('name', 'Enter a valid name').isLength({ min: 3 }),
         body('email', 'Enter a valid email').isEmail(),

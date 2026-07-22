@@ -15,7 +15,7 @@ const NoteState = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1ODU1MGVjZTkyMzM0NWI4MDU0OTgxIn0sImlhdCI6MTc4NDE3MzgzOH0.eoczNV0k7cczeV1_Rdec1ja9_AIVnSb3HJ5s-gQEmWk",
+        "auth-token":localStorage.getItem('token') ,
       },
     });
 
@@ -39,7 +39,7 @@ const addNote = async (title, description, tag) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1ODU1MGVjZTkyMzM0NWI4MDU0OTgxIn0sImlhdCI6MTc4NDE3MzgzOH0.eoczNV0k7cczeV1_Rdec1ja9_AIVnSb3HJ5s-gQEmWk",
+        "auth-token":localStorage.getItem('token') ,
       },
       body: JSON.stringify({ title, description, tag }),
     });
@@ -47,7 +47,7 @@ const addNote = async (title, description, tag) => {
     const json = await response.json();
 
     if (response.ok) {
-      console.log("Successfully added note:", json); // 👈 এই লাইনটি যোগ করুন
+      console.log("Successfully added note:", json); 
       setNotes((prevNotes) => [...prevNotes, json]);
     } else {
       console.log("Failed to add note:", json);
@@ -57,7 +57,7 @@ const addNote = async (title, description, tag) => {
   }
 };
 
-  // Delete a note
+  
   // Delete a note
 const deleteNote = async (id) => {
   try {
@@ -65,7 +65,7 @@ const deleteNote = async (id) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1ODU1MGVjZTkyMzM0NWI4MDU0OTgxIn0sImlhdCI6MTc4NDE3MzgzOH0.eoczNV0k7cczeV1_Rdec1ja9_AIVnSb3HJ5s-gQEmWk",
+        "auth-token":localStorage.getItem('token') ,
       },
     });
 
@@ -91,7 +91,7 @@ const deleteNote = async (id) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmE1ODU1MGVjZTkyMzM0NWI4MDU0OTgxIn0sImlhdCI6MTc4NDE3MzgzOH0.eoczNV0k7cczeV1_Rdec1ja9_AIVnSb3HJ5s-gQEmWk",
+          "auth-token": localStorage.getItem('token'),
         },
         body: JSON.stringify({
           title,
