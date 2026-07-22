@@ -1,13 +1,18 @@
-const mongoose=require('mongoose');
-const mongoURI="mongodb://localhost:27017/devnote";
-const connectToMongo=async()=>{
-try{
-   await mongoose.connect(mongoURI);
-   console.log("Connected to Mongo Successfully");
-}
-    catch(err){
+const mongoose = require('mongoose');
 
-        console.log("Error connecting to MongoDB:",err);
+
+require('dotenv').config();
+
+
+const mongoURI = process.env.MONGO_URI;
+
+const connectToMongo = async () => {
+    try {
+        await mongoose.connect(mongoURI);
+        console.log("Connected to Mongo Successfully!");
+    } catch (error) {
+        console.error("Error connecting to MongoDB:", error);
     }
 }
-module.exports=connectToMongo;
+
+module.exports = connectToMongo;
