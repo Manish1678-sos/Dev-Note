@@ -5,26 +5,35 @@ const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
 
+  // Environment Variable theke URL nebe (fallback to localhost for local testing)
+  const host = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: credentials.email, password: credentials.password }),
-    });
+    
+    try {
+      const response = await fetch(`${host}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: credentials.email, password: credentials.password }),
+      });
 
-    const json = await response.json();
-    console.log(json);
+      const json = await response.json();
+      console.log(json);
 
-    if (json.success) {
-      // Save auth token and redirect to home
-      localStorage.setItem('token', json.authtoken);
-      props.showAlert("Logged in successfully", "success");
-      navigate("/");
-    } else {
-      props.showAlert("Invalid credentials", "danger");
+      if (json.success) {
+        // Save auth token and redirect to home
+        localStorage.setItem('token', json.authtoken);
+        props.showAlert("Logged in successfully", "success");
+        navigate("/");
+      } else {
+        props.showAlert("Invalid credentials", "danger");
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      props.showAlert("Unable to connect to server. Please check your backend deployment.", "danger");
     }
   };
 
